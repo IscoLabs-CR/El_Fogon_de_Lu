@@ -64,8 +64,8 @@
   }
 
   .tag {
-    @apply inline-flex items-center rounded-full px-2.5 py-0.5 font-mono text-[10px]
-           uppercase tracking-eyebrow;
+    @apply inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-0.5
+           font-mono text-[10px] uppercase tracking-eyebrow;
   }
 
   /* Cifras: siempre tabulares para que las columnas no bailen. */

@@ -144,34 +144,40 @@ export default function GastosPanel({
           <Empty>Todavia no hay gastos.</Empty>
         ) : (
           <ul className="border-t border-line">
-            {expenses.map((e, i) => (
-              <li
-                key={e.id}
-                className="reveal group flex items-center gap-4 border-b border-line py-3"
-                style={{ ["--index" as string]: Math.min(i, 10) }}
-              >
-                <span className="num w-14 shrink-0 text-[12px] text-muted">
-                  {shortDate(e.business_date)}
-                </span>
-                <span className="min-w-0 flex-1 truncate text-[15px]">
-                  {e.description || "Gasto"}
-                </span>
-                <Tag>{CATEGORY_LABEL[e.category]}</Tag>
-                <PaymentTag method={e.paid_with} />
-                <span className="num w-28 shrink-0 text-right text-[15px]">
-                  {money(e.amount)}
-                </span>
-                {cajaAbierta && session && e.session_id === session.id ? (
-                  <button
-                    type="button"
-                    onClick={() => onDelete(e.id)}
-                    className="text-[12px] text-muted underline-offset-4 opacity-0 transition-opacity hover:text-credito-fg hover:underline focus-visible:opacity-100 group-hover:opacity-100"
-                  >
-                    Eliminar
-                  </button>
-                ) : null}
-              </li>
-            ))}
+            {expenses.map((e, i) => {
+              const puedeEliminar =
+                cajaAbierta && session && e.session_id === session.id;
+              return (
+                <li
+                  key={e.id}
+                  className="reveal group grid grid-cols-[auto_1fr_auto] items-center gap-x-3 gap-y-2 border-b border-line py-3 sm:flex sm:gap-4"
+                  style={{ ["--index" as string]: Math.min(i, 10) }}
+                >
+                  <span className="num text-[12px] text-muted sm:order-1 sm:w-14 sm:shrink-0">
+                    {shortDate(e.business_date)}
+                  </span>
+                  <span className="min-w-0 truncate text-[15px] sm:order-2 sm:flex-1">
+                    {e.description || "Gasto"}
+                  </span>
+                  <span className="num whitespace-nowrap text-right text-[15px] sm:order-4 sm:w-28 sm:shrink-0">
+                    {money(e.amount)}
+                  </span>
+                  <div className="col-span-2 flex items-center gap-2 sm:order-3 sm:col-auto">
+                    <Tag>{CATEGORY_LABEL[e.category]}</Tag>
+                    <PaymentTag method={e.paid_with} />
+                  </div>
+                  {puedeEliminar ? (
+                    <button
+                      type="button"
+                      onClick={() => onDelete(e.id)}
+                      className="justify-self-end text-[12px] text-muted underline-offset-4 transition-opacity hover:text-credito-fg hover:underline sm:order-5 sm:opacity-0 sm:focus-visible:opacity-100 sm:group-hover:opacity-100"
+                    >
+                      Eliminar
+                    </button>
+                  ) : null}
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>
