@@ -22,7 +22,7 @@ export async function requireProfile(): Promise<Profile> {
   return profile as Profile;
 }
 
-/** Guard de las pantallas exclusivas del admin (ventas mensuales, empresas).
+/** Guard de las pantallas exclusivas del admin (ventas mensuales).
  *  El bloqueo de verdad lo hacen RLS y los RPC; esto evita mostrar la pantalla. */
 export async function requireAdmin(): Promise<Profile> {
   const profile = await requireProfile();

@@ -11,7 +11,7 @@ const LINKS = [
   { href: "/caja", label: "Caja", adminOnly: false },
   { href: "/gastos", label: "Gastos", adminOnly: false },
   { href: "/creditos", label: "Creditos", adminOnly: false },
-  { href: "/empresas", label: "Empresas", adminOnly: true },
+  { href: "/empresas", label: "Empresas", adminOnly: false },
   { href: "/reportes/dia", label: "Dia", adminOnly: false },
   { href: "/reportes/mes", label: "Mes", adminOnly: true },
 ];

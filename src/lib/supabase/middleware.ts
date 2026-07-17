@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 /** Rutas que solo el admin puede abrir. El bloqueo real vive en RLS y en los RPC;
  *  esto es defensa en profundidad para que el cobrador ni siquiera vea la pantalla. */
-const ADMIN_ONLY = ["/reportes/mes", "/empresas"];
+const ADMIN_ONLY = ["/reportes/mes"];
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
