@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
@@ -13,6 +13,16 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   title: "El Fogon de Lu",
   description: "Control de ventas, caja y cuentas por cobrar.",
+  // Permite instalar la app en iOS con su propia pantalla (sin barra de Safari).
+  appleWebApp: {
+    capable: true,
+    title: "El Fogón de Lu",
+    statusBarStyle: "default",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#221812",
 };
 
 export default function RootLayout({

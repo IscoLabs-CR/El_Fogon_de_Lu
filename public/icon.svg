@@ -1,0 +1,24 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#221812"/>
+
+  <!-- Pan superior -->
+  <path d="M 106 226 C 106 166 168 148 256 148 C 344 148 406 166 406 226 Z" fill="#E3A15A"/>
+  <!-- Ajonjoli -->
+  <g fill="#F6E9CF">
+    <ellipse cx="205" cy="203" rx="8" ry="4" transform="rotate(-22 205 203)"/>
+    <ellipse cx="242" cy="180" rx="8" ry="4" transform="rotate(10 242 180)"/>
+    <ellipse cx="286" cy="186" rx="8" ry="4" transform="rotate(-14 286 186)"/>
+    <ellipse cx="322" cy="205" rx="8" ry="4" transform="rotate(24 322 205)"/>
+    <ellipse cx="230" cy="210" rx="8" ry="4" transform="rotate(4 230 210)"/>
+    <ellipse cx="300" cy="212" rx="8" ry="4" transform="rotate(16 300 212)"/>
+  </g>
+
+  <!-- Lechuga -->
+  <path d="M 98 226 L 414 226 L 414 238 Q 402 251 386 241 Q 370 251 354 241 Q 338 251 322 241 Q 306 251 290 241 Q 274 251 258 241 Q 242 251 226 241 Q 210 251 194 241 Q 178 251 162 241 Q 146 251 130 241 Q 114 251 98 241 Z" fill="#86A85C"/>
+
+  <!-- Carne -->
+  <rect x="116" y="248" width="280" height="34" rx="16" fill="#7A4A2B"/>
+
+  <!-- Pan inferior -->
+  <path d="M 106 300 C 106 292 112 286 122 286 L 390 286 C 400 286 406 292 406 300 L 406 316 C 406 336 384 348 352 348 L 160 348 C 128 348 106 336 106 316 Z" fill="#D9924A"/>
+</svg>
