@@ -21,11 +21,13 @@ export default function CajaPanel({
   initialSales,
   initialExpenses,
   history,
+  isAdmin,
 }: {
   initialSession: CashSession | null;
   initialSales: Sale[];
   initialExpenses: Expense[];
   history: CashSession[];
+  isAdmin: boolean;
 }) {
   const router = useRouter();
   const [openDialog, setOpenDialog] = useState<"apertura" | "cierre" | null>(null);
@@ -167,12 +169,14 @@ export default function CajaPanel({
         </Card>
       )}
 
-      <div className="mt-20">
-        <h2 className="eyebrow mb-5">Cierres anteriores</h2>
-        {history.length === 0 ? (
-          <Empty>Todavia no hay cierres registrados.</Empty>
-        ) : (
-          <div className="overflow-x-auto">
+      {/* Los cierres anteriores solo los ve el admin; el cobrador no. */}
+      {isAdmin ? (
+        <div className="mt-20">
+          <h2 className="eyebrow mb-5">Cierres anteriores</h2>
+          {history.length === 0 ? (
+            <Empty>Todavia no hay cierres registrados.</Empty>
+          ) : (
+            <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] border-collapse text-[14px]">
               <thead>
                 <tr className="border-b border-line text-left">
@@ -209,9 +213,10 @@ export default function CajaPanel({
                 })}
               </tbody>
             </table>
-          </div>
-        )}
-      </div>
+            </div>
+          )}
+        </div>
+      ) : null}
 
       <AperturaModal
         open={openDialog === "apertura"}

@@ -6,7 +6,8 @@ import CajaPanel from "./CajaPanel";
 export const dynamic = "force-dynamic";
 
 export default async function CajaPage() {
-  await requireProfile();
+  const profile = await requireProfile();
+  const isAdmin = profile.role === "admin";
   const supabase = await createClient();
 
   const { data: session } = await supabase
@@ -32,12 +33,16 @@ export default async function CajaPage() {
           .eq("session_id", openSession.id)
           .order("created_at", { ascending: false })
       : Promise.resolve({ data: [] }),
-    supabase
-      .from("cash_sessions")
-      .select("*")
-      .eq("status", "cerrada")
-      .order("business_date", { ascending: false })
-      .limit(15),
+    // Los cierres anteriores son solo del admin. La RLS ya se los niega al
+    // cobrador; aca ni se piden para no mostrarle la seccion.
+    isAdmin
+      ? supabase
+          .from("cash_sessions")
+          .select("*")
+          .eq("status", "cerrada")
+          .order("business_date", { ascending: false })
+          .limit(15)
+      : Promise.resolve({ data: [] }),
   ]);
 
   return (
@@ -46,6 +51,7 @@ export default async function CajaPage() {
       initialSales={(salesRes.data ?? []) as Sale[]}
       initialExpenses={(expensesRes.data ?? []) as Expense[]}
       history={(historyRes.data ?? []) as CashSession[]}
+      isAdmin={isAdmin}
     />
   );
 }
