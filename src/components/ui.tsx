@@ -182,13 +182,21 @@ export function Modal({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
+  // Enfocar el primer campo SOLO al abrir. Si esto dependiera de onClose (que
+  // varios modales recrean en cada render), se re-ejecutaria en cada tecla y le
+  // robaria el foco a la casilla que se esta escribiendo.
+  useEffect(() => {
+    if (!open) return;
+    ref.current?.querySelector<HTMLElement>("input, select, button")?.focus();
+  }, [open]);
+
+  // Cerrar con Escape. Puede re-suscribirse si cambia onClose: no toca el foco.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
-    ref.current?.querySelector<HTMLElement>("input, select, button")?.focus();
     return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
