@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { registerCharge, registerSale } from "@/lib/rpc";
@@ -43,17 +43,6 @@ export default function CreditosPanel({
 
   const visible = filter ? balances.filter((b) => b.company_id === filter) : balances;
 
-  const porEmpresa = useMemo(() => {
-    const map = new Map<string, { name: string; total: number; count: number }>();
-    for (const b of balances) {
-      const cur = map.get(b.company_id) ?? { name: b.company_name, total: 0, count: 0 };
-      cur.total += Number(b.balance);
-      cur.count += 1;
-      map.set(b.company_id, cur);
-    }
-    return [...map.entries()];
-  }, [balances]);
-
   const totalPorCobrar = balances.reduce((sum, b) => sum + Number(b.balance), 0);
 
   return (
@@ -72,25 +61,13 @@ export default function CreditosPanel({
         </div>
       ) : null}
 
-      <div className="grid gap-4 lg:grid-cols-3">
-        <Card index={0}>
-          <p className="eyebrow mb-2">Total por cobrar</p>
-          <p className="num text-4xl tracking-[-0.02em]">{money(totalPorCobrar)}</p>
-          <p className="mt-2 text-[13px] text-muted">
-            {balances.length} empleados con cuenta abierta.
-          </p>
-        </Card>
-
-        {porEmpresa.map(([id, info], i) => (
-          <Card key={id} index={i + 1}>
-            <p className="eyebrow mb-2">{info.name}</p>
-            <p className="num text-4xl tracking-[-0.02em]">{money(info.total)}</p>
-            <p className="mt-2 text-[13px] text-muted">
-              {info.count} {info.count === 1 ? "empleado" : "empleados"}.
-            </p>
-          </Card>
-        ))}
-      </div>
+      <Card index={0} className="max-w-sm">
+        <p className="eyebrow mb-2">Total por cobrar</p>
+        <p className="num text-3xl tracking-[-0.02em]">{money(totalPorCobrar)}</p>
+        <p className="mt-2 text-[13px] text-muted">
+          {balances.length} empleados con cuenta abierta.
+        </p>
+      </Card>
 
       <div className="mt-16 flex flex-wrap items-center gap-2">
         <button
