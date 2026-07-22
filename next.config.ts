@@ -47,6 +47,9 @@ const csp = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Solo dev: permite que el celular en la LAN cargue los recursos de HMR sin que
+  // Next bloquee el origen cruzado. No afecta produccion.
+  allowedDevOrigins: ["192.168.18.74"],
   async headers() {
     // X-Frame-Options: DENY rompe la vista previa movil en desarrollo.
     if (!isProd) return [];

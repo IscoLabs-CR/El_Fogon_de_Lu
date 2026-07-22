@@ -6,6 +6,7 @@ import { requireProfile } from "@/lib/auth";
 import { money, shortDate } from "@/lib/format";
 import { PAYMENT_LABEL, type EmployeeBalance, type StatementRow } from "@/lib/types";
 import { Card, Empty, SectionTitle, Tag } from "@/components/ui";
+import FacturaButton from "./FacturaButton";
 
 export const dynamic = "force-dynamic";
 
@@ -47,7 +48,18 @@ export default async function EstadoCuentaPage({
         Volver a creditos
       </Link>
 
-      <SectionTitle eyebrow={empleado.company_name} title={empleado.employee_name} />
+      <SectionTitle
+        eyebrow={empleado.company_name}
+        title={empleado.employee_name}
+        action={
+          <FacturaButton
+            employeeId={empleado.employee_id}
+            employeeName={empleado.employee_name}
+            companyName={empleado.company_name}
+            currentBalance={saldo}
+          />
+        }
+      />
 
       <div className="grid gap-4 lg:grid-cols-3">
         <Card index={0}>

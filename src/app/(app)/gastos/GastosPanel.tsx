@@ -100,42 +100,22 @@ export default function GastosPanel({
         </Card>
       </div>
 
-      <div className="mt-16 grid gap-12 lg:grid-cols-2">
-        <div>
-          <h2 className="eyebrow mb-5">Ultimas doce semanas</h2>
-          {weekly.length === 0 ? (
-            <Empty>Sin gastos registrados.</Empty>
-          ) : (
-            <ul className="border-t border-line">
-              {[...weekly].reverse().map((w) => (
-                <li key={w.bucket} className="flex items-center gap-4 border-b border-line py-3">
-                  <span className="num flex-1 text-[13px] text-muted">
-                    Semana del {shortDate(w.bucket)}
-                  </span>
-                  <span className="num text-[15px]">{money(w.total)}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        <div>
-          <h2 className="eyebrow mb-5">Por mes</h2>
-          {monthly.length === 0 ? (
-            <Empty>Sin gastos registrados.</Empty>
-          ) : (
-            <ul className="border-t border-line">
-              {[...monthly].reverse().map((m) => (
-                <li key={m.bucket} className="flex items-center gap-4 border-b border-line py-3">
-                  <span className="num flex-1 text-[13px] text-muted">
-                    {shortDate(m.bucket)}
-                  </span>
-                  <span className="num text-[15px]">{money(m.total)}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+      <div className="mt-16 max-w-xl">
+        <h2 className="eyebrow mb-5">Por mes</h2>
+        {monthly.length === 0 ? (
+          <Empty>Sin gastos registrados.</Empty>
+        ) : (
+          <ul className="border-t border-line">
+            {[...monthly].reverse().map((m) => (
+              <li key={m.bucket} className="flex items-center gap-4 border-b border-line py-3">
+                <span className="num flex-1 text-[13px] text-muted">
+                  {shortDate(m.bucket)}
+                </span>
+                <span className="num text-[15px]">{money(m.total)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div className="mt-16">

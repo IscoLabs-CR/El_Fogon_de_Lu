@@ -10,3 +10,6 @@ next-env.d.ts
 .DS_Store
 
 .vercel
+
+# Certificados de desarrollo (HTTPS local). La llave privada no debe subirse.
+certificates/
