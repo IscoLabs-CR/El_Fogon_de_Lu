@@ -11,12 +11,12 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: "El Fogon de Lu",
+  title: "El Hornito de Lu",
   description: "Control de ventas, caja y cuentas por cobrar.",
   // Permite instalar la app en iOS con su propia pantalla (sin barra de Safari).
   appleWebApp: {
     capable: true,
-    title: "El Fogón de Lu",
+    title: "El Hornito de Lu",
     statusBarStyle: "default",
   },
 };

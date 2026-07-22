@@ -39,7 +39,7 @@ export default function Nav({ profile }: { profile: Profile }) {
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/80 backdrop-blur">
       <div className="mx-auto flex max-w-shell items-center gap-x-6 px-6 py-4">
         <Link href="/" className="font-serif text-lg tracking-[-0.02em]">
-          El Fogon de Lu
+          El Hornito de Lu
         </Link>
 
         {/* Tabs horizontales: solo en pantallas medianas hacia arriba */}

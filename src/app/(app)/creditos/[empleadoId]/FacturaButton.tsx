@@ -116,7 +116,7 @@ export default function FacturaButton({
   function buildFile(): { blob: Blob; filename: string } {
     const hoy = todayCR();
     const rowsXlsx: Cell[][] = [
-      [{ text: "El Fogon de Lu", style: "title" }],
+      [{ text: "El Hornito de Lu", style: "title" }],
       [{ text: "Estado de cuenta", style: "subtitle" }],
       [],
       [{ text: "Cliente:", style: "label" }, employeeName],

@@ -7,8 +7,8 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "El Fogón de Lu",
-    short_name: "El Fogón",
+    name: "El Hornito de Lu",
+    short_name: "El Hornito",
     description: "Control de ventas, caja y cuentas por cobrar.",
     start_url: "/",
     display: "standalone",

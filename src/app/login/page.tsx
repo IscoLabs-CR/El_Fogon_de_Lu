@@ -9,7 +9,7 @@ export default function LoginPage() {
         <div className="reveal mb-10">
           <p className="eyebrow mb-3">Control de ventas</p>
           <h1 className="font-serif text-4xl leading-[1.1] tracking-[-0.03em]">
-            El Fogon de Lu
+            El Hornito de Lu
           </h1>
         </div>
         <LoginForm />
